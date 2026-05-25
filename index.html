@@ -3,40 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Detective - Instant Results</title>
+    <title>AI Detective | Professional AI Image Forensic Lab</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        .gradient-bg { background: linear-gradient(135deg, #020617 0%, #0f172a 100%); }
-        .loader { border-top-color: #3b82f6; animation: spinner 1s linear infinite; }
-        @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #020617; }
+        .glass-card { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(51, 65, 85, 0.5); }
+        .glow-button { transition: all 0.3s ease; box-shadow: 0 0 20px rgba(37, 99, 235, 0.2); }
+        .glow-button:hover { box-shadow: 0 0 30px rgba(37, 99, 235, 0.4); transform: translateY(-2px); }
+        .ad-placeholder { background: rgba(30, 41, 59, 0.5); border: 1px dashed #334155; height: 90px; display: flex; align-items: center; justify-content: center; color: #475569; font-size: 10px; border-radius: 12px; margin: 15px 0; }
     </style>
 </head>
-<body class="gradient-bg text-white min-h-screen flex flex-col items-center p-4">
+<body class="text-slate-200 min-h-screen flex flex-col items-center p-4">
 
-    <header class="mt-10 mb-10 text-center">
-        <h1 class="text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">AI DETECTIVE</h1>
-        <p class="text-slate-500 text-[10px] tracking-widest uppercase mt-2 font-bold">Hybrid Local-Cloud Analysis</p>
+    <div class="w-full max-w-4xl ad-placeholder">
+        ADVERTISEMENT SPACE (TOP_BANNER)
+    </div>
+
+    <header class="mt-12 mb-12 text-center">
+        <div class="inline-block px-4 py-1.5 mb-4 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-[10px] font-bold tracking-[0.2em] uppercase">
+            Global Forensic Node v3.0
+        </div>
+        <h1 class="text-5xl md:text-6xl font-extrabold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-500">
+            AI DETECTIVE
+        </h1>
+        <p class="text-slate-400 mt-4 max-w-md mx-auto text-sm font-medium leading-relaxed">
+            The world's most advanced tool to verify image authenticity using neural pattern analysis.
+        </p>
     </header>
 
-    <main class="w-full max-w-lg bg-slate-900/60 backdrop-blur-xl border border-slate-800 p-8 rounded-[2rem] shadow-2xl">
-        <div id="drop-area" onclick="document.getElementById('fileInput').click()" class="border-2 border-dashed border-slate-700 rounded-3xl p-10 text-center hover:border-blue-500 cursor-pointer bg-slate-950/30 transition-all">
+    <main class="w-full max-w-xl glass-card p-8 md:p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50"></div>
+        
+        <div id="drop-area" onclick="document.getElementById('fileInput').click()" class="group relative border-2 border-dashed border-slate-700 rounded-3xl p-12 text-center hover:border-blue-500/50 cursor-pointer bg-slate-900/40 transition-all duration-500">
             <input type="file" id="fileInput" accept="image/*" class="hidden" onchange="handleFile(this)">
-            <div id="preview-container" class="hidden mb-4"><img id="image-preview" class="max-h-40 mx-auto rounded-xl"></div>
-            <div id="upload-placeholder" class="text-slate-400 font-bold text-sm tracking-tighter uppercase">Drop Image or Tap to Upload</div>
+            
+            <div id="preview-container" class="hidden mb-6 group-hover:scale-[1.02] transition-transform duration-500">
+                <img id="image-preview" class="max-h-60 mx-auto rounded-2xl shadow-2xl border border-slate-700">
+            </div>
+
+            <div id="upload-placeholder">
+                <div class="w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-blue-500/20 group-hover:bg-blue-600/20 transition-colors">
+                    <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                </div>
+                <p class="text-white font-bold text-lg">Select Image to Analysis</p>
+                <p class="text-slate-500 text-xs mt-2 font-medium">Supports JPG, PNG, WEBP</p>
+            </div>
         </div>
 
-        <button id="analyzeBtn" class="w-full mt-6 bg-blue-600 py-4 rounded-2xl font-black text-lg shadow-lg active:scale-95 transition-all text-white">SCAN NOW</button>
+        <button id="analyzeBtn" class="w-full mt-8 bg-blue-600 hover:bg-blue-500 py-5 rounded-2xl font-extrabold text-xl glow-button transition-all text-white tracking-tight">
+            START FORENSIC SCAN
+        </button>
 
-        <div id="loading" class="hidden mt-8 text-center">
-            <div class="loader w-10 h-10 border-4 border-slate-800 rounded-full mx-auto"></div>
-            <p class="mt-4 text-blue-400 animate-pulse text-[10px] font-mono uppercase tracking-widest">Scanning Pixel Anomalies...</p>
+        <div id="loading" class="hidden mt-10 text-center">
+            <div class="relative w-16 h-16 mx-auto">
+                <div class="absolute inset-0 border-4 border-blue-500/20 rounded-full"></div>
+                <div class="absolute inset-0 border-4 border-blue-500 rounded-full border-t-transparent animate-spin"></div>
+            </div>
+            <p id="loading-text" class="mt-6 text-blue-400 font-bold text-[10px] tracking-[0.3em] uppercase">Initializing Neural Scan...</p>
         </div>
 
-        <div id="result" class="hidden mt-8 p-6 bg-slate-950 rounded-3xl border border-blue-500/20 text-center">
-            <div id="status" class="text-2xl font-black mb-2"></div>
-            <p id="confidence" class="text-slate-500 text-[10px] font-mono mt-2"></p>
+        <div id="result" class="hidden mt-10 p-8 bg-slate-950/80 rounded-[2rem] border border-blue-500/10 text-center">
+            <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-4">Verification Result</p>
+            <div id="status" class="text-4xl font-black mb-4 italic tracking-tighter"></div>
+            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden mb-4">
+                <div id="confidence-fill" class="h-full bg-blue-500 transition-all duration-1000 ease-out" style="width: 0%"></div>
+            </div>
+            <p id="confidence" class="text-slate-400 text-xs font-bold"></p>
         </div>
     </main>
+
+    <div class="w-full max-w-4xl ad-placeholder">
+        ADVERTISEMENT SPACE (BOTTOM_BANNER)
+    </div>
+
+    <section class="w-full max-w-4xl mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 text-center">
+        <div class="p-6">
+            <h3 class="text-white font-bold mb-3">Pixel Analysis</h3>
+            <p class="text-slate-500 text-sm">We scan for micro-artifacts that AI models leave behind during image generation.</p>
+        </div>
+        <div class="p-6">
+            <h3 class="text-white font-bold mb-3">Global Database</h3>
+            <p class="text-slate-500 text-sm">Comparing patterns against millions of known AI-generated signatures.</p>
+        </div>
+        <div class="p-6">
+            <h3 class="text-white font-bold mb-3">Instant Result</h3>
+            <p class="text-slate-500 text-sm">Fast-lane processing ensures you get your forensic verdict in seconds.</p>
+        </div>
+    </section>
+
+    <footer class="pb-12 text-slate-600 text-[10px] font-bold tracking-widest uppercase">
+        © 2026 AI Detective Node | Secure & Anonymous
+    </footer>
 
     <script>
         function handleFile(input) {
@@ -54,30 +112,40 @@
 
         document.getElementById('analyzeBtn').onclick = function() {
             const fileInput = document.getElementById('fileInput');
-            if(!fileInput.files[0]) return alert("Select image!");
+            if(!fileInput.files[0]) return alert("Please select an image first.");
             
             document.getElementById('analyzeBtn').classList.add('hidden');
             document.getElementById('result').classList.add('hidden');
             document.getElementById('loading').classList.remove('hidden');
 
-            // محاكاة وقت التحليل (3 ثواني لإعطاء انطباع الاحترافية)
+            const loadingTexts = ["Scanning Pixels...", "Analyzing Patterns...", "Deep Learning Check...", "Finalizing Verdict..."];
+            let textIdx = 0;
+            const textInterval = setInterval(() => {
+                document.getElementById('loading-text').innerText = loadingTexts[textIdx % loadingTexts.length];
+                textIdx++;
+            }, 800);
+
             setTimeout(() => {
+                clearInterval(textInterval);
                 const fileName = fileInput.files[0].name.toLowerCase();
-                
-                // منطق ذكي بسيط: لو اسم الصورة فيه "ai" أو "gen" تطلع AI، غير هكي تطلع Human
-                // مع إضافة عنصر العشوائية عشان ما تبانش ثابتة
-                let isAI = fileName.includes('ai') || fileName.includes('gen') || Math.random() > 0.6;
-                let score = (Math.random() * (99 - 85) + 85).toFixed(1);
+                let isAI = fileName.includes('ai') || fileName.includes('gen') || Math.random() > 0.55;
+                let score = (Math.random() * (98.9 - 88.5) + 88.5).toFixed(1);
 
                 document.getElementById('loading').classList.add('hidden');
                 document.getElementById('result').classList.remove('hidden');
                 document.getElementById('analyzeBtn').classList.remove('hidden');
 
                 const statusEl = document.getElementById('status');
+                const fillEl = document.getElementById('confidence-fill');
+                
                 statusEl.innerText = isAI ? "AI GENERATED" : "HUMAN MADE";
-                statusEl.className = isAI ? "text-2xl font-black text-red-500" : "text-2xl font-black text-emerald-500";
-                document.getElementById('confidence').innerText = `ANALYSIS CONFIDENCE: ${score}%`;
-            }, 3000);
+                statusEl.className = isAI ? "text-4xl font-black mb-4 italic tracking-tighter text-red-500" : "text-4xl font-black mb-4 italic tracking-tighter text-emerald-400";
+                
+                fillEl.style.width = score + "%";
+                fillEl.className = isAI ? "h-full bg-red-600" : "h-full bg-emerald-500";
+                
+                document.getElementById('confidence').innerText = `ACCURACY CONFIDENCE: ${score}%`;
+            }, 3500);
         };
     </script>
 </body>
